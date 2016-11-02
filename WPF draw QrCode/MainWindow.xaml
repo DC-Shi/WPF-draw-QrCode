@@ -1,0 +1,17 @@
+﻿<Window x:Class="WPF_draw_QrCode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_draw_QrCode"
+        xmlns:WPF="clr-namespace:Gma.QrCodeNet.Encoding.Windows.WPF;assembly=Gma.QrCodeNet.Encoding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="240" Width="192"
+        WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True"
+        MouseDown="Window_MouseDown" Icon="icon.png">
+        <!-- http://www.cnblogs.com/zhouyinhui/archive/2007/03/14/674952.html -->
+    <Grid>
+        <WPF:QrCodeImgControl x:Name="qrCodeImg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="192" Height="192" Text="{Binding Text, ElementName=textBoxSrc}"/>
+        <TextBox x:Name="textBoxSrc" HorizontalAlignment="Left" Margin="0,192,0,0" TextWrapping="Wrap" Text="WPF draw QrCode, and it support directly show clipboard content." Width="192"/>
+    </Grid>
+</Window>
