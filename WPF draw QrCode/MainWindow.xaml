@@ -10,6 +10,7 @@
         WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True"
         MouseDown="Window_MouseDown" Icon="icon.png">
         <!-- http://www.cnblogs.com/zhouyinhui/archive/2007/03/14/674952.html -->
+        <!-- Note: taskbar icon is this icon.png, not icon.ico -->
     <Grid>
         <WPF:QrCodeImgControl x:Name="qrCodeImg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="192" Height="192" Text="{Binding Text, ElementName=textBoxSrc}"/>
         <TextBox x:Name="textBoxSrc" HorizontalAlignment="Left" Margin="0,192,0,0" TextWrapping="Wrap" Text="WPF draw QrCode, and it support directly show clipboard content." Width="192"/>
