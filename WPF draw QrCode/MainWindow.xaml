@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="WPF draw QR Code" Height="192" Width="352"
         WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True"
-        MouseDown="Window_MouseDown" Icon="icon.png">
+        MouseDown="Window_MouseDown" Icon="icon.png" ResizeMode="NoResize">
         <!-- http://www.cnblogs.com/zhouyinhui/archive/2007/03/14/674952.html -->
         <!-- Note: taskbar icon is this icon.png, not icon.ico -->
     <StackPanel Orientation="Horizontal" >
