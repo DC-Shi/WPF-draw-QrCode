@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:WPF_draw_QrCode"
         xmlns:WPF="clr-namespace:Gma.QrCodeNet.Encoding.Windows.WPF;assembly=Gma.QrCodeNet.Encoding"
         mc:Ignorable="d"
-        Title="MainWindow" Height="240" Width="192"
+        Title="WPF draw QR Code" Height="192" Width="352"
         WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True"
         MouseDown="Window_MouseDown" Icon="icon.png">
         <!-- http://www.cnblogs.com/zhouyinhui/archive/2007/03/14/674952.html -->
         <!-- Note: taskbar icon is this icon.png, not icon.ico -->
-    <Grid>
-        <WPF:QrCodeImgControl x:Name="qrCodeImg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="192" Height="192" Text="{Binding Text, ElementName=textBoxSrc}"/>
-        <TextBox x:Name="textBoxSrc" HorizontalAlignment="Left" Margin="0,192,0,0" TextWrapping="Wrap" Text="WPF draw QrCode, and it support directly show clipboard content." Width="192"/>
-    </Grid>
+    <StackPanel Orientation="Horizontal" >
+        <WPF:QrCodeImgControl x:Name="qrCodeImg" Width="192" Height="192" Text="{Binding Text, ElementName=textBoxSrc}"/>
+        <TextBox x:Name="textBoxSrc" TextWrapping="Wrap" Text="WPF draw QrCode, and it support directly show clipboard content." Width="160"/>
+    </StackPanel>
 </Window>
