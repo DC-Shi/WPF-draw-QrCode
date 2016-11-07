@@ -44,7 +44,23 @@ namespace WPF_draw_QrCode
             /// If the text is too long, we ignore it.
             /// Currently, URL cannot be longer than 2K,
             /// hence 3000 threshold should be OK.
-            if (text.Length > 3000) return;
+            /// Changed threshold to 2060.
+            /// Since I found a 2423 long message would not show the pic.
+            /// And URL is limited to 2048.
+            ///   * http://en.wikipedia.org/wiki/QR_code
+            ///   Maximum character storage capacity (40-L)
+            ///   Numeric only      Max. 7,089 characters(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+            ///   Alphanumeric      Max. 4,296 characters(0–9, A–Z[upper -case only], space, $, %, *, +, -, ., /, :)
+            ///   Binary / byte     Max. 2,953 characters(8 - bit bytes)(23624 bits)
+            ///   Kanji / Kana      Max. 1,817 characters
+            ///  http://www.qrcode.com/en/about/version.html
+            ///  has another detailed max chars.
+            ///  Version 40(177x177) with H can have upto 1852 Alphanumeric
+            ///  with M can have upto 2331 Bytes.
+            ///  This is confirmed by trying 2331&2332 length text.
+            ///  Work for 2331 but not for 2332.
+            ///  So setting 2100 is OK.
+            if (text.Length > 2100) return;
             /// If no text presented, ignore it.
             if (text.Length < 1) return;
             /// Change textbox if necessary.
