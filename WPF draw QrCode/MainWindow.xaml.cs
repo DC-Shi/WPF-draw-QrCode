@@ -45,6 +45,8 @@ namespace WPF_draw_QrCode
             /// Currently, URL cannot be longer than 2K,
             /// hence 3000 threshold should be OK.
             if (text.Length > 3000) return;
+            /// If no text presented, ignore it.
+            if (text.Length < 1) return;
             /// Change textbox if necessary.
             if (!textBoxSrc.Text.Equals(text))
             {
