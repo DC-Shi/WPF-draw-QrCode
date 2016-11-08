@@ -5,14 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_draw_QrCode"
         xmlns:WPF="clr-namespace:Gma.QrCodeNet.Encoding.Windows.WPF;assembly=Gma.QrCodeNet.Encoding"
+        xmlns:Encoding="clr-namespace:Gma.QrCodeNet.Encoding;assembly=Gma.QrCodeNet.Encoding"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
         mc:Ignorable="d"
         Title="WPF draw QR Code" Height="192" Width="352"
         WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True"
         MouseDown="Window_MouseDown" Icon="icon.png" ResizeMode="NoResize">
-        <!-- http://www.cnblogs.com/zhouyinhui/archive/2007/03/14/674952.html -->
-        <!-- Note: taskbar icon is this icon.png, not icon.ico -->
-    <StackPanel Orientation="Horizontal" >
-        <WPF:QrCodeImgControl x:Name="qrCodeImg" Width="192" Height="192" Text="{Binding Text, ElementName=textBoxSrc}"/>
-        <TextBox x:Name="textBoxSrc" TextWrapping="Wrap" Text="WPF draw QrCode, and it support directly show clipboard content." Width="160"/>
+    <!-- http://www.cnblogs.com/zhouyinhui/archive/2007/03/14/674952.html -->
+    <!-- Note: taskbar icon is this icon.png, not icon.ico -->
+    <Window.Resources>
+        <!-- https://msdn.microsoft.com/en-us/library/bb613576(v=vs.110).aspx -->
+        <ObjectDataProvider MethodName="GetValues"
+                    ObjectType="{x:Type sys:Enum}"
+                    x:Key="EccLevelDataProvider">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Encoding:ErrorCorrectionLevel" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <StackPanel Orientation="Horizontal" DataContext="{Binding Source={StaticResource EccLevelDataProvider}}">
+        <WPF:QrCodeImgControl x:Name="qrCodeImg" Text="{Binding Text, ElementName=textBoxSrc}" ErrorCorrectLevel="{Binding SelectedItem, ElementName=comboBox}" />
+        <DockPanel Width="160">
+            <ComboBox x:Name="comboBox" DockPanel.Dock="Top" ItemsSource="{Binding Source={StaticResource EccLevelDataProvider}, Mode=OneWay}" SelectedIndex="1"/>
+            <TextBox x:Name="textBoxSrc" DockPanel.Dock="Bottom" TextWrapping="Wrap" Text="WPF draw QrCode, and it support directly show clipboard content." Margin="0"/>
+        </DockPanel>
     </StackPanel>
 </Window>
